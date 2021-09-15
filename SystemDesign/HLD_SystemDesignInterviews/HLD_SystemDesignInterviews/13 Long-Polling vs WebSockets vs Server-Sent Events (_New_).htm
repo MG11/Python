@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<!-- saved from url=(0091)https://www.educative.io/collection/page/5668639101419520/5649050225344512/5715426797420544 -->
+<html class="default js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta property="og:title" content="Long-Polling vs WebSockets vs Server-Sent Events (*New*)" data-react-helmet="true">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link media="screen" rel="stylesheet" type="text/css" href="./Long-Polling vs WebSockets vs Server-Sent Events (_New_)_files/style-16ec7f96631278cfe0d808ae9e32a53f.css">
+
+    <meta property="fb:app_id" content="530312767132745">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="Educative: Interactive Courses for Software Developers">
+
+    <meta name="twitter:site" content="@educativeinc">
+    <meta name="twitter:domain" content="educative.io">
+    <!-- <meta name="twitter:creator" content="@educativeinc" /> --><title>Long-Polling vs WebSockets vs Server-Sent Events (*New*)</title>
+        <meta property="og:title" content="Long-Polling vs WebSockets vs Server-Sent Events (*New*)">
+        <meta name="twitter:title" content="Long-Polling vs WebSockets vs Server-Sent Events (*New*)"><meta name="description" content="What is the difference between Long-Polling, WebSockets and Server-Sent Events?">
+        <meta property="og:description" content="What is the difference between Long-Polling, WebSockets and Server-Sent Events?">
+        <meta name="twitter:description" content="What is the difference between Long-Polling, WebSockets and Server-Sent Events?">
+    <meta name="twitter:card" content="summary">
+    <meta property="og:url" content="https://www.educative.io/collection/page/5668639101419520/5649050225344512/5715426797420544">
+    
+
+    <!-- Facebook Pixel Code -->
+    <script async="" src="https://static.ads-twitter.com/uwt.js"></script><script async="" src="https://www.google-analytics.com/analytics.js"></script><script async="" src="https://connect.facebook.net/en_US/fbevents.js"></script><script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1637285686566701'); // Insert your pixel ID here.
+    fbq('track', 'PageView');
+    </script>
+    <noscript>&lt;img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1637285686566701&amp;ev=PageView&amp;noscript=1"
+    /&gt;</noscript>
+    <!-- DO NOT MODIFY -->
+    <!-- End Facebook Pixel Code -->
+
+    <!-- Global site tag (gtag.js) - Google AdWords: 936783588 -->
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=AW-936783588"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'AW-936783588');
+    </script>
+
+<style type="text/css">.timezone-picker {
+  display: inline-block;
+  font: 13px sans-serif;
+  position: relative;
+}
+.timezone-picker-textfield input {
+  width: 100%;
+  padding: 9px 12px;
+  font: inherit;
+  box-sizing: border-box;
+  outline: 0;
+  background: #fff;
+  border: 1px solid #e6ebec;
+  border-radius: 2px;
+}
+.timezone-picker-list {
+  position: relative;
+  top: 100%;
+  left: 0;
+  right: 0;
+  max-height: 200px;
+  overflow-y: auto;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #e6ebec;
+  margin-top: -1px;
+  border-radius: 0 0 3px 3px;
+  display: none;
+}
+.timezone-picker-list-item {
+  color: #444;
+  padding: 5px 12px;
+  cursor: pointer;
+}
+.timezone-picker-list-item:hover,
+.timezone-picker-list-item-active {
+  background: #ececec;
+}
+.timezone-picker-open .timezone-picker-list {
+  display: block;
+}
+.timezone-picker-selected .timezone-picker-textfield input {
+  color: #474747;
+}
+</style><style type="text/css">.react-json-view .copy-to-clipboard-container{vertical-align:top;display:none}.react-json-view .click-to-add,.react-json-view .click-to-edit,.react-json-view .click-to-remove{display:none}.react-json-view .object-content .variable-row:hover .click-to-edit,.react-json-view .object-content .variable-row:hover .click-to-remove,.react-json-view .object-key-val:hover>span>.object-meta-data>.click-to-add,.react-json-view .object-key-val:hover>span>.object-meta-data>.click-to-remove,.react-json-view .object-key-val:hover>span>.object-meta-data>.copy-to-clipboard-container,.react-json-view .variable-row:hover .copy-to-clipboard-container{display:inline-block}</style></head>
+<body class="" data-version="1.0.0">
+<div id="pace-loader" class="pace-running pace-done pace-small"><div class="pace  pace-inactive"><div class="pace-progress" data-progress-text="100%" data-progress="99" style="width: 100%;">
+  <div class="pace-progress-inner"></div>
+</div>
+<div class="pace-activity"></div></div></div>
+<div id="app-preloader"><div data-reactroot="" class="preloader" style="display: none;"><img src="./Long-Polling vs WebSockets vs Server-Sent Events (_New_)_files/preloader.gif" width="128" height="128"></div></div>
+<div id="app-container"><div data-reactroot="" class="b-root"><div><div id="app"><!-- react-empty: 4 --><div class="b-page b-page_dashboard b-page_sidebar"><section class="_270U05pynNkMrwixbrkhjJ _2ZLLTjaPGqWI5KW3XtXRlN"><header class="_2wttuAfHG2IeNhoEz60sZG"><div style="margin-top: 10px;"><a class="" href="https://www.educative.io/collection/5668639101419520/5649050225344512">Grokking the System Design Interview</a></div></header><div class="R74YplvBCNwXEkG8OsJEB _228oHS6IDw5BqrnGLeuaTm"><div class="b-search-component"><div class="form-group"><input type="text" placeholder="Search" value="" class="form-control"><button type="button" class="b-btn b-btn_secondary"><svg class="search-icon" x="0px" y="0px" viewBox="0 0 22.7 23.6"><g><path d="M2.6,15.1c3.2,3.2,8.1,3.4,11.5,0.7c0.5-0.4,0.7-0.6,1.3-1.3l0,0c2.8-3.5,2.6-8.7-0.6-11.9 c-3.4-3.4-8.9-3.4-12.3,0C-0.9,6.1-0.8,11.7,2.6,15.1z M4.1,4.2c2.5-2.6,6.7-2.6,9.2,0c2.6,2.6,2.6,6.8,0,9.4 c-2.5,2.6-6.7,2.6-9.2,0C1.5,11,1.5,6.8,4.1,4.2z"></path><polygon points="22.7,22 21.2,23.6 15.1,16.6 16.1,15.5  "></polygon></g></svg></button></div></div></div><ul class="EO18Ku2cc4xLydliqGsZm"><li><div class="_3LbMrY6BQRFf6-BJr6mKVf _1bG7nU4sUi2BChqcIpQFHM"><div class="_2atbo8um56usrfHjs46gk5" title="System Design Basics">System Design Basics</div><ul class="NN0suGydDO6Y7-LJxopxc"><div class="_2XyVYeDwDrshq9XVCGLD3I"><i class="fa fa-check lesson_check color_grey" aria-hidden="true"></i><li class="_1JGs8Ixi5x0px0VsLRY-0l"><div><a class="" href="https://www.educative.io/collection/page/5668639101419520/5649050225344512/5700735861784576">Why System Design Interviews?</a></div></li></div><div class="_2XyVYeDwDrshq9XVCGLD3I"><i class="fa fa-check lesson_check color_grey" aria-hidden="true"></i><li class="_1JGs8Ixi5x0px0VsLRY-0l"><div><a class="" href="https://www.educative.io/collection/page/5668639101419520/5649050225344512/5766466041282560">System Design Basics</a></div></li></div><div class="_2XyVYeDwDrshq9XVCGLD3I"><i class="fa fa-check lesson_check color_grey" aria-hidden="true"></i><li class="_1JGs8Ixi5x0px0VsLRY-0l"><div><a class="" href="https://www.educative.io/collection/page/5668639101419520/5649050225344512/5747976207073280">Load Balancing</a></div></li></div><div class="_2XyVYeDwDrshq9XVCGLD3I"><i class="fa fa-check lesson_check color_grey" aria-hidden="true"></i><li class="_1JGs8Ixi5x0px0VsLRY-0l"><div><a class="" href="https://www.educative.io/collection/page/5668639101419520/5649050225344512/5643440998055936">Caching</a></div></li></div><div class="_2XyVYeDwDrshq9XVCGLD3I"><i class="fa fa-check lesson_check color_grey" aria-hidden="true"></i><li class="_1JGs8Ixi5x0px0VsLRY-0l"><div><a class="" href="https://www.educative.io/collection/page/5668639101419520/5649050225344512/5146118144917504">Sharding or Data Partitioning</a></div></li></div><div class="_2XyVYeDwDrshq9XVCGLD3I"><i class="fa fa-check lesson_check color_grey" aria-hidden="true"></i><li class="_1JGs8Ixi5x0px0VsLRY-0l"><div><a class="" href="https://www.educative.io/collection/page/5668639101419520/5649050225344512/5681717746597888">Indexes</a></div></li></div><div class="_2XyVYeDwDrshq9XVCGLD3I"><i class="fa fa-check lesson_check color_grey" aria-hidden="true"></i><li class="_1JGs8Ixi5x0px0VsLRY-0l"><div><a class="" href="https://www.educative.io/collection/page/5668639101419520/5649050225344512/5185026253651968">Proxies</a></div></li></div><div class="_2XyVYeDwDrshq9XVCGLD3I"><i class="fa fa-check lesson_check color_grey" aria-hidden="true"></i><li class="_1JGs8Ixi5x0px0VsLRY-0l"><div><a class="" href="https://www.educative.io/collection/page/5668639101419520/5649050225344512/5080491044634624">Queues</a></div></li></div><div class="_2XyVYeDwDrshq9XVCGLD3I"><i class="fa fa-check lesson_check color_grey" aria-hidden="true"></i><li class="_1JGs8Ixi5x0px0VsLRY-0l"><div><a class="" href="https://www.educative.io/collection/page/5668639101419520/5649050225344512/5661458385862656">Redundancy and Replication</a></div></li></div><div class="_2XyVYeDwDrshq9XVCGLD3I"><i class="fa fa-check lesson_check color_grey" aria-hidden="true"></i><li class="_1JGs8Ixi5x0px0VsLRY-0l"><div><a class="" href="https://www.educative.io/collection/page/5668639101419520/5649050225344512/5728116278296576">SQL vs. NoSQL</a></div></li></div><div class="_2XyVYeDwDrshq9XVCGLD3I"><i class="fa fa-check lesson_check color_grey" aria-hidden="true"></i><li class="_1JGs8Ixi5x0px0VsLRY-0l"><div><a class="" href="https://www.educative.io/collection/page/5668639101419520/5649050225344512/5754903989321728">CAP Theorem</a></div></li></div><div class="_2XyVYeDwDrshq9XVCGLD3I"><i class="fa fa-check lesson_check color_grey" aria-hidden="true"></i><li class="_1JGs8Ixi5x0px0VsLRY-0l"><div><a class="" href="https://www.educative.io/collection/page/5668639101419520/5649050225344512/5709068098338816">Consistent Hashing</a></div></li></div><div class="_2XyVYeDwDrshq9XVCGLD3I"><i class="fa fa-check lesson_check color_grey" aria-hidden="true"></i><li class="_1JGs8Ixi5x0px0VsLRY-0l"><div><a class="ZrZtLEVdJgB_HAMT1YlNs" href="https://www.educative.io/collection/page/5668639101419520/5649050225344512/5715426797420544">Long-Polling vs WebSockets vs Server-Sent Events (*New*)</a></div></li></div></ul></div></li><li><div class="_3LbMrY6BQRFf6-BJr6mKVf _1bG7nU4sUi2BChqcIpQFHM"><div class="_2atbo8um56usrfHjs46gk5" title="System Design Problems">System Design Problems</div><ul class="NN0suGydDO6Y7-LJxopxc"><div class="_2XyVYeDwDrshq9XVCGLD3I"><i class="fa fa-check lesson_check color_grey" aria-hidden="true"></i><li class="_1JGs8Ixi5x0px0VsLRY-0l"><div><a class="" href="https://www.educative.io/collection/page/5668639101419520/5649050225344512/5684049913839616">System Design Interviews: A step by step guide</a></div></li></div><div class="_2XyVYeDwDrshq9XVCGLD3I"><i class="fa fa-check lesson_check color_grey" aria-hidden="true"></i><li class="_1JGs8Ixi5x0px0VsLRY-0l"><div><a class="" href="https://www.educative.io/collection/page/5668639101419520/5649050225344512/5668600916475904">Designing a URL Shortening service like TinyURL</a></div></li></div><div class="_2XyVYeDwDrshq9XVCGLD3I"><i class="fa fa-check lesson_check color_grey" aria-hidden="true"></i><li class="_1JGs8Ixi5x0px0VsLRY-0l"><div><a class="" href="https://www.educative.io/collection/page/5668639101419520/5649050225344512/5653164804014080">Designing Pastebin</a></div></li></div><div class="_2XyVYeDwDrshq9XVCGLD3I"><i class="fa fa-check lesson_check color_grey" aria-hidden="true"></i><li class="_1JGs8Ixi5x0px0VsLRY-0l"><div><a class="" href="https://www.educative.io/collection/page/5668639101419520/5649050225344512/5673385510043648">Designing Instagram</a></div></li></div><div class="_2XyVYeDwDrshq9XVCGLD3I"><i class="fa fa-check lesson_check color_grey" aria-hidden="true"></i><li class="_1JGs8Ixi5x0px0VsLRY-0l"><div><a class="" href="https://www.educative.io/collection/page/5668639101419520/5649050225344512/5693417237512192">Designing Dropbox</a></div></li></div><div class="_2XyVYeDwDrshq9XVCGLD3I"><i class="fa fa-check lesson_check color_grey" aria-hidden="true"></i><li class="_1JGs8Ixi5x0px0VsLRY-0l"><div><a class="" href="https://www.educative.io/collection/page/5668639101419520/5649050225344512/5724160613416960">Designing Facebook Messenger</a></div></li></div><div class="_2XyVYeDwDrshq9XVCGLD3I"><i class="fa fa-check lesson_check color_grey" aria-hidden="true"></i><li class="_1JGs8Ixi5x0px0VsLRY-0l"><div><a class="" href="https://www.educative.io/collection/page/5668639101419520/5649050225344512/5741031244955648">Designing Twitter</a></div></li></div><div class="_2XyVYeDwDrshq9XVCGLD3I"><i class="fa fa-check lesson_check color_grey" aria-hidden="true"></i><li class="_1JGs8Ixi5x0px0VsLRY-0l"><div><a class="" href="https://www.educative.io/collection/page/5668639101419520/5649050225344512/5649050225344512">Designing Youtube or Netflix</a></div></li></div><div class="_2XyVYeDwDrshq9XVCGLD3I"><i class="fa fa-check lesson_check color_grey" aria-hidden="true"></i><li class="_1JGs8Ixi5x0px0VsLRY-0l"><div><a class="" href="https://www.educative.io/collection/page/5668639101419520/5649050225344512/5076324926357504">Designing Typeahead Suggestion</a></div></li></div><div class="_2XyVYeDwDrshq9XVCGLD3I"><i class="fa fa-check lesson_check color_grey" aria-hidden="true"></i><li class="_1JGs8Ixi5x0px0VsLRY-0l"><div><a class="" href="https://www.educative.io/collection/page/5668639101419520/5649050225344512/5707274949492736">Designing an API Rate Limiter (*New*)</a></div></li></div><div class="_2XyVYeDwDrshq9XVCGLD3I"><i class="fa fa-check lesson_check color_grey" aria-hidden="true"></i><li class="_1JGs8Ixi5x0px0VsLRY-0l"><div><a class="" href="https://www.educative.io/collection/page/5668639101419520/5649050225344512/5738600293466112">Designing Twitter Search</a></div></li></div><div class="_2XyVYeDwDrshq9XVCGLD3I"><i class="fa fa-check lesson_check color_grey" aria-hidden="true"></i><li class="_1JGs8Ixi5x0px0VsLRY-0l"><div><a class="" href="https://www.educative.io/collection/page/5668639101419520/5649050225344512/5718998062727168">Designing a Web Crawler</a></div></li></div><div class="_2XyVYeDwDrshq9XVCGLD3I"><i class="fa fa-check lesson_check color_grey" aria-hidden="true"></i><li class="_1JGs8Ixi5x0px0VsLRY-0l"><div><a class="" href="https://www.educative.io/collection/page/5668639101419520/5649050225344512/5641332169113600">Designing Facebook’s Newsfeed</a></div></li></div><div class="_2XyVYeDwDrshq9XVCGLD3I"><i class="fa fa-check lesson_check color_grey" aria-hidden="true"></i><li class="_1JGs8Ixi5x0px0VsLRY-0l"><div><a class="" href="https://www.educative.io/collection/page/5668639101419520/5649050225344512/5639274879778816">Designing Yelp or Nearby Friends</a></div></li></div><div class="_2XyVYeDwDrshq9XVCGLD3I"><i class="fa fa-check lesson_check color_grey" aria-hidden="true"></i><li class="_1JGs8Ixi5x0px0VsLRY-0l"><div><a class="" href="https://www.educative.io/collection/page/5668639101419520/5649050225344512/5717271485874176">Designing Uber backend</a></div></li></div><div class="_2XyVYeDwDrshq9XVCGLD3I"><i class="fa fa-check lesson_check color_grey" aria-hidden="true"></i><li class="_1JGs8Ixi5x0px0VsLRY-0l"><div><a class="" href="https://www.educative.io/collection/page/5668639101419520/5649050225344512/5651874166341632">Design BookMyShow (*New*)</a></div></li></div></ul></div></li><li><div class="_3LbMrY6BQRFf6-BJr6mKVf _1bG7nU4sUi2BChqcIpQFHM"><div class="_2atbo8um56usrfHjs46gk5" title="Contact Us">Contact Us</div><ul class="NN0suGydDO6Y7-LJxopxc"><div class="_2XyVYeDwDrshq9XVCGLD3I"><i class="fa fa-check lesson_check color_grey" aria-hidden="true"></i><li class="_1JGs8Ixi5x0px0VsLRY-0l"><div><a class="" href="https://www.educative.io/collection/page/5668639101419520/5649050225344512/5697982787747840">Feedback</a></div></li></div></ul></div></li></ul></section><div class="_25SxXn_779J36FW_8yVmdX _3VJlRYP4nRRzKkJBvLXT5N"><header class="_2gV_nPmf5c_GHdNFnWxdmJ header_dim"><div class="EKg85xIkhyMLkc2Efqej8"><button class="_2-7UcGrzNTjrfPVQ1iNbQM b-btn b-btn_default" type="button"><span class="b-some-with-icon"><i class="b-some-with-icon-icon"><svg class="menu-icon" height="32px" version="1.1" viewBox="0 0 32 32" width="32px"><path d="M4,10h24c1.104,0,2-0.896,2-2s-0.896-2-2-2H4C2.896,6,2,6.896,2,8S2.896,10,4,10z M28,14H4c-1.104,0-2,0.896-2,2  s0.896,2,2,2h24c1.104,0,2-0.896,2-2S29.104,14,28,14z M28,22H4c-1.104,0-2,0.896-2,2s0.896,2,2,2h24c1.104,0,2-0.896,2-2  S29.104,22,28,22z"></path></svg></i><span></span></span></button><nav class="_3EVCovE_YeBRCZo93cUiLf"><a title="Learn" class="" href="https://www.educative.io/learn">Learn</a><a title="Teach" class="" href="https://www.educative.io/teach">Teach</a></nav></div><div class="_16RrvA-y9tK0t_sjqXmvY"><div class="_19VCV_MPfhtdB1UjWuUHfy"><div class="_2PkG8EwdlT0S465T-3b64f"><img src="./Long-Polling vs WebSockets vs Server-Sent Events (_New_)_files/avatar-new.png"></div><div class="_2AHUo0qw5fP-KITgn6SJ8" style="right: -9999px;"><ul class="ISWX4Y00FbbM9Nq2CT98T"><li><a class="ZSOISAdKzLdG1Ns7KkMlh" href="https://www.educative.io/profile/view/5969521483448320">My Profile</a><ul class="_2WSgTMK2-f_jaTmqEig_3D"><li><a class="ZSOISAdKzLdG1Ns7KkMlh" href="https://www.educative.io/profile/view/5969521483448320">View</a></li><li><a class="ZSOISAdKzLdG1Ns7KkMlh" href="https://www.educative.io/profile/edit">Edit</a></li></ul></li><li><span class="ZSOISAdKzLdG1Ns7KkMlh">Logout</span></li></ul></div></div></div></header><div class="b-page b-page_dashboard scroll-container full_height_course_container"><!-- react-empty: 242 --><div class="toggle-sidebar"><div class="b-page__content no-padding"><div class="container"><!-- react-empty: 246 --><div class="_19MNfPnkx0vX2x5FyqmQgV"><div class="_14yqsroduwoTKnGhAvoMi6"><div class="_1APgtRr5raSmcV850sqmft"><h1 class="_3fBEwsM053hx2mPd0uV0nT">Long-Polling vs WebSockets vs Server-Sent Events (*New*)</h1></div><div class="_2jN3CNQSkxP4Yuq2gAxGtm"><p class="_3I1jy_jPHThM_bfNVurwrA">What is the difference between Long-Polling, WebSockets and Server-Sent Events?</p></div></div></div><div class="_1ct7mn-l630OZVoYoSmQAk"><div class="dwOFXCXWnVebB6SXflxgz"><div data-prevent="prevent"><div data-prevent="prevent" class="educativeTextViewer"><p data-id="ff338c381758fcf9925e49484dedded3">Long-Polling, WebSockets, and Server-Sent Events are popular communication protocols between a client like a web browser and a web server. First, let’s start with understanding what a standard&nbsp;HTTP web request looks like. Following are a sequence of events for regular HTTP request:</p>
+<ol>
+<li>Client opens a connection and requests data from the server.</li>
+<li>The server calculates the response.</li>
+<li>The server sends the response back to the client on the opened request.</li>
+</ol>
+</div></div></div><div class="dwOFXCXWnVebB6SXflxgz"><div style="margin-top: 30px; margin-bottom: 30px;"><div style="text-align: center;"><div class="_2ZEMvpnYCwBmMw1w1bYcO_"><img src="./Long-Polling vs WebSockets vs Server-Sent Events (_New_)_files/5748755743637504.png" class="_2O7c-mPHnxwifWp1ZBBxje _3ZCktA-9VLxEJLpXyE6DuL" style="cursor: inherit;"></div></div><div class="_1Gz-UoLSlEmqGCNl2-GUvL"><span class="cmcomp-caption fg-black75">HTTP Protocol</span></div></div></div><div class="dwOFXCXWnVebB6SXflxgz"><div data-prevent="prevent"><div data-prevent="prevent" class="educativeTextViewer"><h3><div style="color:black; background-color:#e2f4c7; border-radius:5px; padding:5px;">Ajax Polling</div></h3>
+<p data-id="9ba767c04f4c354676296f33510bcad7">Polling&nbsp;is a standard technique used by the vast majority of AJAX applications. The basic idea is that the client repeatedly polls (or requests) a server for data. The client makes a request and waits for the server to respond with data. If no data is available, an empty response is returned.</p>
+<ol>
+<li>Client opens a connection and requests data from the server using regular HTTP.</li>
+<li>The requested webpage sends requests to the server at regular intervals (e.g., 0.5 seconds).</li>
+<li>The server calculates the response and sends it back, just like regular HTTP traffic.</li>
+<li>Client repeats the above three steps periodically to get updates from the server.</li>
+</ol>
+<p data-id="be0533bd26bb27152b2d80a103339511">Problem with Polling is that the client has to keep asking the server for any new data. As a result, a lot of responses are empty creating HTTP overhead.</p>
+</div></div></div><div class="dwOFXCXWnVebB6SXflxgz"><div style="margin-top: 30px; margin-bottom: 30px;"><div style="text-align: center;"><div class="_2ZEMvpnYCwBmMw1w1bYcO_"><img src="./Long-Polling vs WebSockets vs Server-Sent Events (_New_)_files/5694639155707904.png" class="_2O7c-mPHnxwifWp1ZBBxje _3ZCktA-9VLxEJLpXyE6DuL" style="cursor: inherit;"></div></div><div class="_1Gz-UoLSlEmqGCNl2-GUvL"><span class="cmcomp-caption fg-black75">Ajax Polling Protocol</span></div></div></div><div class="dwOFXCXWnVebB6SXflxgz"><div data-prevent="prevent"><div data-prevent="prevent" class="educativeTextViewer"><h3><div style="color:black; background-color:#e2f4c7; border-radius:5px; padding:5px;">HTTP Long-Polling</div></h3>
+<p data-id="79a8cc0bff46e71584df02ba754e9616">A variation of the traditional polling technique that allows the server to push information to a client, whenever the data is available. With Long-Polling, the client requests information from the server exactly as in normal polling, but with the expectation that the server may not respond immediately. That’s why this technique is sometimes referred to as a “Hanging GET”.</p>
+<ul>
+<li>If the server does not have any data available for the client, instead of sending an empty response, the server holds the request and waits until some data becomes available.</li>
+<li>Once the data becomes available, a full response is sent to the client. The client then immediately re-request information from the server so that the server will almost always have an available waiting request that it can use to deliver data in response to an event.</li>
+</ul>
+<p data-id="7493ad3497c8406715817aad82485c35">The basic life cycle of an application using HTTP Long-Polling is as follows:</p>
+<ol>
+<li>The client makes an initial request using regular HTTP and then waits for a response.</li>
+<li>The server delays its response until an update is available, or until a timeout has occurred.</li>
+<li>When an update is available, the server sends a full response to the client.</li>
+<li>The client typically sends a new long-poll request, either immediately upon receiving a response or after a pause to allow an acceptable latency period.</li>
+<li>Each Long-Poll request has a timeout. The client has to reconnect periodically after the connection is closed, due to timeouts.</li>
+</ol>
+</div></div></div><div class="dwOFXCXWnVebB6SXflxgz"><div style="margin-top: 30px; margin-bottom: 30px;"><div style="text-align: center;"><div class="_2ZEMvpnYCwBmMw1w1bYcO_"><img src="./Long-Polling vs WebSockets vs Server-Sent Events (_New_)_files/5767494685949952.png" class="_2O7c-mPHnxwifWp1ZBBxje _3ZCktA-9VLxEJLpXyE6DuL" style="cursor: inherit;"></div></div><div class="_1Gz-UoLSlEmqGCNl2-GUvL"><span class="cmcomp-caption fg-black75">Long Polling Protocol</span></div></div></div><div class="dwOFXCXWnVebB6SXflxgz"><div data-prevent="prevent"><div data-prevent="prevent" class="educativeTextViewer"><h3><div style="color:black; background-color:#e2f4c7; border-radius:5px; padding:5px;">WebSockets</div></h3>
+<p data-id="583303317ca30a1444bd491a4326411b">WebSocket&nbsp;provides&nbsp;<a href="https://en.wikipedia.org/wiki/Duplex_(telecommunications)#Full_duplex" target="_blank">Full duplex</a>&nbsp;communication channels over a single&nbsp;TCP&nbsp;connection. It provides a persistent connection between a client and a server that both parties can use to start sending data at any time. The client establishes a WebSocket connection through a process known as the WebSocket handshake. If the process succeeds, then the server and client can exchange data in both directions at any time.
+The WebSocket protocol enables communication between a client and a server with lower overheads, facilitating real-time data transfer from and to the server. This is made possible by providing a standardized way for the server to send content to the browser without being asked by the client, and allowing for messages to be passed back and forth while keeping the connection open.&nbsp;In this way, a two-way (bi-directional) ongoing conversation can take place between a client and a server.</p>
+</div></div></div><div class="dwOFXCXWnVebB6SXflxgz"><div style="margin-top: 30px; margin-bottom: 30px;"><div style="text-align: center;"><div class="_2ZEMvpnYCwBmMw1w1bYcO_"><img src="./Long-Polling vs WebSockets vs Server-Sent Events (_New_)_files/5701867585667072.png" class="_2O7c-mPHnxwifWp1ZBBxje _3ZCktA-9VLxEJLpXyE6DuL" style="cursor: inherit;"></div></div><div class="_1Gz-UoLSlEmqGCNl2-GUvL"><span class="cmcomp-caption fg-black75">WebSockets Protocol</span></div></div></div><div class="dwOFXCXWnVebB6SXflxgz"><div data-prevent="prevent"><div data-prevent="prevent" class="educativeTextViewer"><h3><div style="color:black; background-color:#e2f4c7; border-radius:5px; padding:5px;">Server-Sent Events (SSEs)</div></h3>
+<p data-id="07c2bc8c30ddf282eac914f57b32d295">Under SSEs the client establishes a persistent and long-term connection with the server. The server uses this connection to send data to a client. If the client wants to send data to the server, it would require the use of another technology/protocol to do so.</p>
+<ol>
+<li>Client requests data from a server using regular HTTP.</li>
+<li>The requested webpage opens a connection to the server.</li>
+<li>The server sends the data to the client whenever there’s new information available.</li>
+</ol>
+<p data-id="8c869691c7dec92e707971e87c3dd43b">SSEs are best when we need real-time traffic from the server to the client or if the server is generating data in a loop and will be sending multiple events to the client.</p>
+</div></div></div><div class="dwOFXCXWnVebB6SXflxgz"><div style="margin-top: 30px; margin-bottom: 30px;"><div style="text-align: center;"><div class="_2ZEMvpnYCwBmMw1w1bYcO_"><img src="./Long-Polling vs WebSockets vs Server-Sent Events (_New_)_files/5737979670691840.png" class="_2O7c-mPHnxwifWp1ZBBxje _3ZCktA-9VLxEJLpXyE6DuL" style="cursor: inherit;"></div></div><div class="_1Gz-UoLSlEmqGCNl2-GUvL"><span class="cmcomp-caption fg-black75">Server Sent Events Protocol</span></div></div></div></div><div><div class="HXhONXAf5fJUrFobh2Jpa"><a class="_3Ivp8776xGNEAz-5YQlK1E" href="https://www.educative.io/collection/page/5668639101419520/5649050225344512/5684049913839616"><i class="fa fa-check lesson_check color_grey" aria-hidden="true"></i><!-- react-text: 355 -->Mark as completed<!-- /react-text --></a></div><div class="_3QV2MXyax7C5sAlCIIZm-8"><a class="dabOoFWHTyVLMHZSrgdeH" href="https://www.educative.io/collection/page/5668639101419520/5649050225344512/5709068098338816"><em>← Previous</em><span style="font-weight: 300;">Consistent Hashing</span></a><a class="_3xvNwYsLARfJJSyZ7OCYTP" href="https://www.educative.io/collection/page/5668639101419520/5649050225344512/5684049913839616"><em>Next →</em><span style="font-weight: 300;">System Design Interviews: A step by step guide</span></a></div></div><div class="_35imuQ6bVHlO34ZzPn0WsB"><div id="recomentation_menu_wrapper" class="_2J8XF1D-zhmPfYCglhYgH9 "><div id="onTop" style="width: 100%; display: inline-flex; justify-content: space-between; flex-wrap: wrap;"><!-- react-empty: 366 --><div id="feedback_menu" class="_3QH5Q5YH-WJ_05eemdcn98">Send feedback or ask a question</div><div class="_2_wrkSOIigdwVSsoQHjnjV"><button type="button" class="b-btn"><span class="b-some-with-icon"><i class="b-some-with-icon-icon"><svg class="heart-icon" width="1792" height="1792" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1664 596q0-81-21.5-143t-55-98.5-81.5-59.5-94-31-98-8-112 25.5-110.5 64-86.5 72-60 61.5q-18 22-49 22t-49-22q-24-28-60-61.5t-86.5-72-110.5-64-112-25.5-98 8-94 31-81.5 59.5-55 98.5-21.5 143q0 168 187 355l581 560 580-559q188-188 188-356zm128 0q0 221-229 450l-623 600q-18 18-44 18t-44-18l-624-602q-10-8-27.5-26t-55.5-65.5-68-97.5-53.5-121-23.5-138q0-220 127-344t351-124q62 0 126.5 21.5t120 58 95.5 68.5 76 68q36-36 76-68t95.5-68.5 120-58 126.5-21.5q224 0 351 124t127 344z"></path></svg></i><span></span></span></button><span><!-- react-text: 376 -->11<!-- /react-text --><!-- react-text: 377 --> recommendation<!-- /react-text --><!-- react-text: 378 -->s<!-- /react-text --></span></div></div></div></div></div></div></div><footer class="_1r4y67aae3cNVDUY3gGsCJ b-footer"><nav class="_1CZ-NgVp7cr0LA38LyfK86 _3qmC_-X6D6Kq4XsLugcOP5 navbar navbar-default"><div id="footer_menu_container" class="container txt_center"><ul class="nav navbar-nav fr_responsive"><li><a class="link" href="https://www.educative.io/learn">Home</a></li><li><a class="link" href="https://www.educative.io/learn">Featured</a></li><li><a class="link" href="https://www.educative.io/team">Team</a><!-- react-text: 290 --> <!-- /react-text --></li><li><a class="link" href="https://www.educative.io/collection/6630002/190001">Blog</a></li><li><a class="link" href="https://www.educative.io/collection/page/6630002/170001/220001">FAQ</a></li><li><a class="link" href="https://www.educative.io/terms">Terms of Service</a></li><li><a href="mailto:contact@educative.io">Contact Us</a></li></ul></div></nav></footer></div></div></div><!-- react-empty: 35 --><span></span></div></div></div></div>
+
+<script type="text/javascript" src="./Long-Polling vs WebSockets vs Server-Sent Events (_New_)_files/vendor.prod-29753945a195a406cf3934a61efd91fc.js"></script>
+
+<script type="text/javascript" src="./Long-Polling vs WebSockets vs Server-Sent Events (_New_)_files/modernizr.min.js"></script>
+<script type="text/javascript" src="./Long-Polling vs WebSockets vs Server-Sent Events (_New_)_files/educative.prod-9077f314e64fb269241a087eaa18cd00.js"></script>
+
+<!-- Twitter universal website tag code -->
+<script>
+!function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);
+},s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='//static.ads-twitter.com/uwt.js',
+a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');
+// Insert Twitter Pixel ID and Standard Event data below
+twq('init','nz5z7');
+twq('track','PageView');
+</script>
+<!-- End Twitter universal website tag code -->
+
+
+
+<svg id="SvgjsSvg1001" width="2" height="0" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" style="overflow: hidden; top: -100%; left: -100%; position: absolute; opacity: 0;"><defs id="SvgjsDefs1002"></defs><polyline id="SvgjsPolyline1003" points="0,0"></polyline><path id="SvgjsPath1004" d="M0 0 "></path></svg></body></html>
