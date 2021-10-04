@@ -16,6 +16,13 @@ public class countNumberOfDigits {
 		}
 		System.out.print(c);
 
+		// print digits
+		c = scn.nextInt();
+		String s = String.valueOf(c);
+		for (int i = 0; i < s.length(); i++) {
+			System.out.println(s.charAt(i));
+		}
+
 	}
 
 }
