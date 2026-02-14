@@ -18,4 +18,25 @@ class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
         self.backtracking(nums, 0)
         return self.res
+
+        
+class Solution1:
+    output = []
+    def purmuthepper(self, nums, data):
+        if len(nums) == 0:
+            self.output.append(data[:])
+
+        for i in range(len(nums)):
+            input = nums[:i] + nums[i + 1:]
+            data.append(nums[i])
+            self.purmuthepper(input, data)
+            data.pop(-1)
+        
+    def permute(self, nums: List[int]) -> List[List[int]]:
+        data = []
+        self.output = []
+        self.purmuthepper(nums, data)
+        return self.output
+
+
             
