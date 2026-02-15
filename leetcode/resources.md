@@ -1,5 +1,5 @@
 1. backtracking, resursion, dp: aditya verma
-2. trie: tushar
+2. trie: takeuforward https://www.youtube.com/watch?v=dBGUmUQhjaM&t=55s
 3. heap: adul bari
 4. algorithms: https://www.youtube.com/watch?v=0IAPZzGSbME&list=PLDN4rrl48XKpZkf03iYFl-O29szjTrs_O
 
