@@ -1,3 +1,53 @@
+# https://leetcode.com/problems/design-add-and-search-words-data-structure/solutions/1725327/javacpython-a-very-well-detailed-explana-rcnm/
+
+
+class TreeNode:
+    def __init__(self):
+        self.endOfWord = False
+        self.data = defaultdict(TreeNode)
+
+class WordDictionary:
+
+    def __init__(self):
+        self.root = TreeNode()
+
+    def addWord(self, word: str) -> None:
+        dummyNode = self.root
+
+        for w in word:
+            if not dummyNode.data.get(w):
+                dummyNode.data[w] = TreeNode()
+            dummyNode = dummyNode.data[w]
+        dummyNode.endOfWord = True
+    
+    def searchHelper(self, word, node):
+        tempNode = node
+        for i in range(len(word)):
+            if word[i] == '.':
+                for value in tempNode.data.values():
+                    if self.searchHelper(word[i + 1:], value):
+                        return True
+                else:
+                    return False
+            else:
+                if tempNode.data.get(word[i]):
+                    tempNode = tempNode.data[word[i]]
+                else:
+                    return False
+        return tempNode.endOfWord
+
+    def search(self, word: str) -> bool:
+        return self.searchHelper(word, self.root)
+
+
+# Your WordDictionary object will be instantiated and called as such:
+# obj = WordDictionary()
+# obj.addWord(word)
+# param_2 = obj.search(word)
+
+------------------------------------------------------------------------------------------
+
+
 from collections import defaultdict
 
 class WordDictionary:
