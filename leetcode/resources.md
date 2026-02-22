@@ -11,15 +11,4 @@ blind 75, top 150
 
 
 lld: design patterns, alex book
-hld: alex xu book, narendra, gaurav, ddi
-
-affirmation:
-i believe in myself. i have confidence.
-i have right to choose best life for myself.
-shiv will take care of health, family, marriage, job, everything for the best. 
-leave everything else till march 2026.
-
-gratitude:
-respect study, job and boss. 
-respect my family
-gratitude for my job and my family.
+hld: alex xu book, narendra, hello, ddi
