@@ -28,6 +28,33 @@ class Solution(object):
                 rank[p1] += rank[p2]
                 par[p2] = p1
             return 1
+
+
+# do dfs of for each node (like number of island)
+class Solution1:
+
+    def countComponents(self, n: int, edges: List[List[int]]) -> int:
+
+        adjlist = defaultdict(list)
+        for edge in edges:
+            adjlist[edge[0]].append(edge[1])
+            adjlist[edge[1]].append(edge[0])
+        
+        visited = set()
+
+        def dfs(node):
+            visited.add(node)
+            for adj in adjlist[node]:
+                if adj not in visited:
+                    dfs(adj)
+        
+        count = 0
+        for i in range(n):
+            if i not in visited:
+                count += 1
+                dfs(i)
+        return count
+
         
         res = n
         for n1, n2 in edges:
