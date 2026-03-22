@@ -1,5 +1,6 @@
 """
 do topological sort and check if cycle is found
+https://www.youtube.com/watch?v=iTBaI90lpDQ
 """
 # O(V+ E) | O(E)
 
