@@ -2,6 +2,7 @@ from collections import deque, defaultdict
 from typing import List
 
 # O(C) | O(E) # C is sum of all alphabets of words
+# https://www.youtube.com/watch?v=5lZ0iJMrUMk&t=330s
 class Solution:
     def alienOrder(self, words: List[str]) -> str:
         adj_list = defaultdict(list)
