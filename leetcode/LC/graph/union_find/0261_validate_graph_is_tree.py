@@ -56,4 +56,32 @@ class Solution1:
                     return False
             return True
         return dfs(0, -1) and len(visited) == n
+
+# BFS (use this)
+class Solution2:
+    def validTree(self, n: int, edges: List[List[int]]) -> bool:
+        
+        if n != len(edges) + 1:
+            return False
+        
+        visited = []
+        adjlist = defaultdict(list)
+
+        for edge in edges:
+            adjlist[edge[0]].append(edge[1])
+            adjlist[edge[1]].append(edge[0])
+
+        queue = deque([0])
+        visited.append(0)
+
+        while len(queue):
+            node = queue.popleft()
+
+            for adj in adjlist[node]:
+                if adj in visited:
+                    continue
+                visited.append(adj)
+                queue.append(adj)
+        return len(visited) == n
+        
                         
