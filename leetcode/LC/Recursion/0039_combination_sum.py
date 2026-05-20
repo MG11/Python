@@ -4,23 +4,23 @@ from typing import List
 
 class Solution:
     def __init__(self):
-        self.ans = []
-    
-    def cdH(self, candidates, index, target, output):
-        if(target < 0):
+        self.output = []
+
+    def combinationSumHelper(self, candidates, i, target, data):
+        if target < 0:
             return
-        if(target == 0):
-            self.ans.append(output.copy())
+        if target == 0:
+            self.output.append(data[:])
             return
-        
-        for i in range(index, len(candidates)):
-            # self.cdH(candidates, target, output)
-            if(target - candidates[i] >= 0):
-                output.append(candidates[i])
-                self.cdH(candidates, i, target - candidates[i], output)
-                output.pop()
-        
-        
+        if i < len(candidates):
+            data.append(candidates[i])
+            self.combinationSumHelper(candidates, i, target - candidates[i], data)
+            data.pop()
+            self.combinationSumHelper(candidates, i + 1, target, data)
+
+
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
-        self.cdH(candidates, 0, target, [])
-        return self.ans
+        self.output = []
+        self.combinationSumHelper(sorted(candidates), 0, target, [])
+        return self.output
+
