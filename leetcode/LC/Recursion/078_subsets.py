@@ -1,3 +1,6 @@
+# time complexity: n*2^n : n to copy elements in result, 2^n are the total number of subsets formed,
+# space complexity: n, which is height of resursion tree.
+
 class Solution:
     output = []
     def subsethelper(self, nums, i, data):
