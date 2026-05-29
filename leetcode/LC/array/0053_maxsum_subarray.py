@@ -19,3 +19,14 @@ class Solution:
         # if maxsum is negative, return maximum value
         maxsum = max(nums) if maxsum < 0 else maxsum
         return maxsum
+
+
+class Solution1:
+    def maxSubArray(self, nums: List[int]) -> int:
+        maxSum = -float('inf')
+        currentSum = 0
+        for num in nums:
+            currentSum = max(num, currentSum + num)
+            maxSum = max(maxSum, currentSum)
+        return maxSum
+
