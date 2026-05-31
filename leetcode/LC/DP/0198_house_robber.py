@@ -56,6 +56,19 @@ class Solution4:
             memo[i] = max(nums[i-2]+memo[i-2], memo[i-1])
         return memo[-1]
 
+
+class Solution:
+    def rob(self, nums: List[int]) -> int:
+        length = len(nums)
+        dp = [0] * length
+        dp[0] = nums[0]
+        if length > 1:
+            dp[1] = max(nums[0], nums[1])
+        for i in range(2, length):
+            dp[i] = max(dp[i-1], nums[i] + dp[i-2])
+        return dp[-1]
+
+
 # 1 DP
 class Solution:
     def rob(self, nums: List[int]) -> int:
