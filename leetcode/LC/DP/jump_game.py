@@ -49,6 +49,18 @@ class Solution:
         return False
 
 
+## jump game (leetocde 55), check alex xu for solution detail
+class Solution:
+    def canJump(self, nums: List[int]) -> bool:
+        destination = len(nums) - 1
+
+        for i in range(destination - 1, -1, -1):
+            if nums[i] + i >= destination:
+                destination = i
+        
+        return destination == 0
+
+
 # https://leetcode.com/problems/jump-game-iii/
 class Solution:
     def canReach(self, arr: List[int], start: int) -> bool:
