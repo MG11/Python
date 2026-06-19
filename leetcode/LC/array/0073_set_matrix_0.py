@@ -37,4 +37,26 @@ class Solution:
         if rowzero:
             for i in range(col):
                 matrix[0][i] = 0
-        
+
+
+
+
+class Solution:
+    def setZeroes(self, matrix: List[List[int]]) -> None:
+        """
+        Do not return anything, modify matrix in-place instead.
+        """
+        for r in range(len(matrix)):
+            for c in range(len(matrix[0])):
+                if matrix[r][c] == 0:
+                    matrix[r][0] = 'ab' if (matrix[r][0] == 'b' or matrix[r][0] == 'ab') else 'a'
+                    matrix[0][c] = 'ab' if (matrix[0][c] == 'a' or matrix[0][c] == 'ab') else 'b'
+
+        for r in range(len(matrix) - 1, -1, -1):
+            for c in range(len(matrix[0]) -1, -1, -1):
+                if matrix[r][0] == 'a':
+                    matrix[r][c] = 0
+                elif matrix[0][c] == 'b':
+                    matrix[r][c] = 0
+                elif matrix[0][c]=="ab" or matrix[r][0]=="ab":
+                    matrix[r][c]=0
