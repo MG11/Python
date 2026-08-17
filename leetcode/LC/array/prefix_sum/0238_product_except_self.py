@@ -22,3 +22,18 @@ class Solution:
                 right = right*nums[i+1]
             output[i] *= right
         return output
+
+class Solution:
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+        lefttoRight = [1]*len(nums)
+        righttoLeft = [1]*len(nums)
+
+        for i in range(1, len(lefttoRight)):
+            lefttoRight[i] = nums[i-1]*lefttoRight[i-1]
+        
+        for i in range(len(righttoLeft) - 2, -1, -1):
+            righttoLeft[i] = nums[i+1]*righttoLeft[i+1]
+        
+        return [righttoLeft[i]*lefttoRight[i] for i in range(len(nums))]
+
+        
