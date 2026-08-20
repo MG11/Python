@@ -1,13 +1,16 @@
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
         start, end = 0, 0
-        maxLength = 0
-        data = {}
+        hashMap = {}
+        maxlength = 0
 
-        while end < len(s):
-            if s[end] in data and data[s[end]] >= start:
-                maxLength = max(end - start, maxLength)
-                start = data[s[end]] + 1
-            data[s[end]] = end
-            end += 1
-        return max(end - start, maxLength)
+        for i in range(len(s)):
+            if s[i] not in hashMap or start > hashMap[s[i]]:
+                hashMap[s[i]] = i
+                end = i
+            else:
+                start = hashMap[s[i]] + 1
+                hashMap[s[i]] = i
+            maxlength = max(maxlength, end - start + 1)
+        return maxlength
+
