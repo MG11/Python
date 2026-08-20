@@ -1,6 +1,5 @@
 class Solution:
-# Complexity: Time O(n^2), Space O(1)
-# Explanation: 2 nested loops found -> O(n^2); no obvious large temporary structures
+# Complexity: Time O(log(max(p))*len(p), Space O(1)
     def minEatingSpeed(self, piles: List[int], h: int) -> int:
         l, r = 1, max(piles)
         res = r
