@@ -1,14 +1,15 @@
-from typing import List
+"""
+[7 , 1, 5, 3, 6, 4]
+"""
 
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        profit = 0
         minimum = float('inf')
-        
-        for price in prices:
-            if minimum > price:
-                minimum = price
-            currentProfit = price - minimum
-            profit = max(currentProfit, profit)
-        return profit
-        
+        maximum = 0
+
+        for i in range(len(prices)):
+            if prices[i] < minimum:
+                minimum = prices[i]
+            else:
+                maximum = max(maximum, prices[i] - minimum)
+        return maximum
