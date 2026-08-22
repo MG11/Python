@@ -1,13 +1,9 @@
 class Solution:
     def countBits(self, n: int) -> List[int]:
         output = [0]*(n+1)
-        twopower = 0
-        for i in range(n+1):
-            biton = 2**twopower
-            if i == 2**twopower:
-                output[i] = 1
-                twopower += 1
-            else:
-                previouspower = int(biton/2)
-                output[i] = output[previouspower] + output[i - previouspower]
+        offset = 1
+        for i in range(1, n+1):
+            if (i & (i - 1)) == 0:
+                offset = i
+            output[i] = 1 + output[i - offset]
         return output
