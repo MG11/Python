@@ -3,7 +3,6 @@ class Solution:
         outputString = ""
         maxLength = 0
 
-
         for i in range(len(s)):
 
             # odd length
@@ -29,3 +28,13 @@ class Solution:
                 outputString = s[start + 1: end]
         
         return outputString
+
+
+"""
+neetcode
+for each index, 
+check for even and odd length separately. 
+
+now: check if index - and index + 1 are same, if same check more else, calculate 
+length and output string
+"""
