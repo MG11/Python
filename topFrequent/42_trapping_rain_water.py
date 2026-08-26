@@ -1,23 +1,21 @@
-class Solution(object):
-    def trap(self, height):
-        n = len(height)
-        if n == 0:
-            return 0
-        left = [0] * n
-        right = [0] * n
+class Solution:
+    def trap(self, height: List[int]) -> int:
+        lenHeight = len(height)
+        leftMax = [0]*lenHeight
+        rightMax = [0]*lenHeight
 
-        left[0]=height[0]
-        right[n-1] = height[n-1]
+        for i in range(1, lenHeight):
+            leftMax[i] = max(leftMax[i-1], height[i-1])
+        
+        for i in range(lenHeight - 2, -1, -1):
+            rightMax[i] = max(rightMax[i + 1], height[i + 1])
+        
 
-        for i in range(1, n):
-            left[i] = max(left[i-1], height[i])
-        for i in range(n-2, -1, -1):
-            right[i] = max(right[i+1], height[i])
-
-        max_amount = 0
-        for i in range(n):
-            max_amount += min(left[i], right[i]) - height[i]
-        return max_amount
+        sum = 0
+        for i in range(lenHeight):
+            sum += max(0, min(leftMax[i], rightMax[i]) - height[i])
+        
+        return sum
         
 """
 source: neetcode
