@@ -1,3 +1,1 @@
-<h2><a href="https://leetcode.com/problems/maximum-product-subarray">Maximum Product Subarray</a></h2>
-
-Original problem statement preserved at the source folder: [`152-maximum-product-subarray/README.md`](../../../../152-maximum-product-subarray/README.md).
+# This file is intentionally left empty because the original file was moved into a topic-based folder as part of repo cleanup.

@@ -1,3 +1,1 @@
-<h2><a href="https://leetcode.com/problems/two-sum">Two Sum</a></h2>
-
-Original problem statement preserved at the source folder: [`1-two-sum/README.md`](../../../../1-two-sum/README.md).
+# This file is intentionally left empty because the original file was moved into a topic-based folder as part of repo cleanup.

@@ -1,3 +1,1 @@
-<h2><a href="https://leetcode.com/problems/longest-repeating-character-replacement">Longest Repeating Character Replacement</a></h2>
-
-Original problem statement preserved at the source folder: [`424-longest-repeating-character-replacement/README.md`](../../../../424-longest-repeating-character-replacement/README.md).
+# This file is intentionally left empty because the original file was moved into a topic-based folder as part of repo cleanup.
