@@ -1,7 +1,6 @@
 class Trie:
 
     def __init__(self):
-        self.val = None
         self.children = {}
         self.isend = False
         
@@ -12,7 +11,6 @@ class Trie:
             t = root.children.get(w)
             if not t:
                 t = Trie()
-                t.val = w
                 root.children[w] = t
             root = t
         root.isend = True
