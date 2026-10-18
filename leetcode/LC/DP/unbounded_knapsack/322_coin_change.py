@@ -19,6 +19,7 @@ class Solution:
 #                     +1 because the coin is used once,
 # also the same coin can be used multiple times so, cut coin amount from the same row
 # min of not taking this coin and taking this coin
+                    # best way to make j-coin using first i coins) = 1 + dp[i][j-coin]
                     dp[j] = min(dp[j], dp[j - coins[i]] + 1)
         return dp[amount] if dp[amount] <=amount else -1
 
