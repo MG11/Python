@@ -9,9 +9,11 @@ class Trie:
     def insert(self, word: str) -> None:
         root = self
         for w in word:
-            t = root.children.get(w, Trie())
-            t.val = w
-            root.children[w] = t
+            t = root.children.get(w)
+            if not t:
+                t = Trie()
+                t.val = w
+                root.children[w] = t
             root = t
         root.isend = True
 
