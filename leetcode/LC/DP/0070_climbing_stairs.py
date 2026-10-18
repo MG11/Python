@@ -16,4 +16,18 @@ class Solution:
             secondLast = Last
             Last = current
         return current
+
+
+# https://www.youtube.com/watch?v=Y0lT9Fck7qI
+class Solution1:
+    def climbStairs(self, n: int) -> int:
+        first = 1
+        second = 1
+
+        while n != 1:
+            sum = first + second
+            second = first
+            first = sum
+            n -= 1
+        return first
         
