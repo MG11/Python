@@ -2,10 +2,10 @@ class Solution:
     def countComponents(self, n: int, edges: list[list[int]]) -> int:
         parent = {i:i for i in range(n)}
 
-        def find(n):
-            while(parent[n] != n):
-                n = parent[n]
-            return n
+        def find(x):
+            if(parent[x] != x):
+                parent[x] = find(parent[x])
+            return parent[x]
         
         for edge in edges:
             rootA = find(edge[0])
