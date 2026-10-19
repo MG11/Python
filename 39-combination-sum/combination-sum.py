@@ -1,7 +1,7 @@
 class Solution:
     def combinationSum(self, candidates: list[int], target: int) -> list[list[int]]:
         ans = []
-        # candidates.sort()
+        candidates.sort()
 
         def helper(start, target, data):
             nonlocal ans
