@@ -14,3 +14,17 @@ class Solution:
                     dp[i] = max(dp[i], dp[j] + 1)
             maximum = max(maximum, dp[i])
         return maximum
+
+# https://www.youtube.com/watch?v=cjWnW0hdF1Y
+class Solution2:
+    def lengthOfLIS(self, nums: list[int]) -> int:
+        dp = [1]*len(nums)
+        n = len(nums)
+        maximum = 1
+        for i in range(n- 1, -1, -1):
+            for j in range(i, n):
+                if nums[i] < nums[j]:
+                    dp[i] = max(dp[i], dp[j] + 1)
+            maximum = max(maximum, dp[i])
+        return maximum
+
