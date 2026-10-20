@@ -1,3 +1,5 @@
+# https://leetcode.com/problems/lfu-cache/solutions/207673/python-concise-solution-detailed-explana-8f7d/?envType=company&envId=salesforce&favoriteSlug=salesforce-three-months
+
 class Node:
     def __init__(self, key, val):
         self.key = key
